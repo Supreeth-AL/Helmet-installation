@@ -7,6 +7,8 @@ app.use(helmet.frameguard({action: 'deny'}));
 app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 app.use(helmet.ieNoOpen());
+const timeInSecond = 90*24*60*60;
+app.use(helmet.hsts({maxAge: timeInSecond, force : true}));
 
 module.exports = app;
 const api = require('./server.js');
